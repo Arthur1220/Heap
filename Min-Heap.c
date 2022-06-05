@@ -81,7 +81,7 @@ void inicializar(Heap *H, int alt)
 
 void addMin(Heap *H, int valor)
 {
-    if(H->size == H->cap)
+    if(H->size == pow(2, (H->cap+1)) - 1)
     {
         H->cap++;
         int qtd = pow(2, (H->cap+1)) - 1;
@@ -142,14 +142,14 @@ void swap(int *x, int *y)
 
 void show(Heap *H)
 {
-    int i;
+    int i, cap = pow(2, (H->cap+1)) - 1;
 
     system("cls");
     printf("    --Heap\n");
 
     printf("Size: %d\n", H->size);
     printf("Altura: %d\n", H->cap);
-    printf("Capacidade Max: %d\n", pow(2, (H->cap+1)) - 1);
+    printf("Capacidade Max: %d\n", cap);
 
     for(i=0; i<H->size; i++)
         printf("%d  ", H->vet[i]);
